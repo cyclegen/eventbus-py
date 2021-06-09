@@ -94,12 +94,12 @@ class SubscriberB:
         bus.get().register(self)
 
     @Subscribe(priority=100)
-    def on_event(self, event: OrderEvent):
-        print(f'已将{event.symbol}计入到资产组合')
-        trade = TradeEvent(event.symbol, event.price, event.amount)
+    def on_event(self, order: OrderEvent):
+        print(f'已将{order.symbol}计入到资产组合')
+        trade = TradeEvent(order.symbol, order.price, order.amount)
 
         print('还可以继续执行')
-        bus.get().cancel_delivery(event)
+        bus.get().cancel_delivery(order)
         bus.get().post(trade)
         bus.get().unregister(self)
 
