@@ -29,7 +29,7 @@ class Subscribe:
     :arg sticky 粘滞事件处理标志，在该方法被初始化时是否处理对应事件的粘滞事件
     """
 
-    def __init__(self, priority: int = 0, sticky: bool = False):
+    def __init__(self, priority: int = 100, sticky: bool = False):
         self.priority: int = priority
         self.sticky: bool = sticky
 
