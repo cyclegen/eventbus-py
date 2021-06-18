@@ -16,11 +16,11 @@ class SubscriberMethod:
         self.method(*args, **kwargs)
 
     def __eq__(self, other):
-        if self == other:
+        if id(self) == id(other):
             return True
         elif isinstance(other, SubscriberMethod):
-            self.check_method_definition()
-            other.check_method_definition()
+            # self.check_method_definition()
+            # other.check_method_definition()
             return self.method_definition == other.method_definition
         else:
             return False

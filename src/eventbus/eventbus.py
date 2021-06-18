@@ -1,7 +1,7 @@
 import logging
 import typing
 
-from eventbus.executor import MainOrderExecutor
+from eventbus.executor import MainOrderExecutor, MainExecutor
 from eventbus.finder import Finder
 from eventbus.logger import Logger
 from eventbus.subscription import Subscription
@@ -12,7 +12,7 @@ def get_default_logger(identifier):
     logger.setLevel(logging.DEBUG)
     # create console handler and set level to debug
     ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
+    ch.setLevel(logging.WARNING)
     # create formatter
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     # add formatter to ch
@@ -31,6 +31,7 @@ class EventBus:
         self.sticky_events: typing.Dict[type, object] = {}
         self.logger = logger if logger is not None else get_default_logger(id(self))
         self.executor = MainOrderExecutor(self)
+        # self.executor = MainExecutor(self)
 
     def register(self, subscriber):
         if self.is_registered(subscriber):
@@ -39,6 +40,7 @@ class EventBus:
         subscriber_methods = self.finder.find(subscriber)
         for subscriber_method in subscriber_methods:
             self.subscribe(subscriber, subscriber_method)
+            self.logger.debug(f'{subscriber} has registered the method {subscriber_method}')
 
     def is_registered(self, subscriber) -> bool:
         return subscriber in self.event_types_by_subscriber
