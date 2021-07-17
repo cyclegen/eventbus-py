@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="eventbus-py",
-    version="0.0.1",
+    version="0.0.3",
     author="CycleGen",
     author_email="pypi@cyclegen.cloud",
     description="An eventbus that used for FinanGen",
@@ -25,14 +25,3 @@ setuptools.setup(
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",
 )
-# setup(
-#     name='eventbus',
-#     version='v0.1.0',
-#     description='An eventbus that used for FinanGen', # 简要描述
-#     py_modules=['eventbus'],   #  需要打包的模块
-#     author='CycleGen', # 作者名
-#     author_email='me@cyclegen.cloud',   # 作者邮件
-#     url='https://github.com/cyclegen/eventbus-py', # 项目地址,一般是代码托管的网站
-#     # requires=['requests','urllib3'], # 依赖包,如果没有,可以不要
-#     license='MIT'
-# )

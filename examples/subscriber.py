@@ -1,3 +1,5 @@
+import sys
+sys.path.append("../src")
 from eventbus import Subscribe, bus
 
 
