@@ -32,7 +32,7 @@ class MainOrderExecutor(Executor):
         self.quit = False
         self.queue = queue.Queue()
         self.bus = eventbus
-        self.thread = threading.Thread(target=self.run)
+        self.thread = threading.Thread(target=self.run, daemon=True)
         self.thread.start()
 
     def enqueue(self, subscription, event):

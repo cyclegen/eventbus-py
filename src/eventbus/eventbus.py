@@ -1,10 +1,10 @@
 import logging
 import typing
 
-from eventbus.executor import MainOrderExecutor, MainExecutor
-from eventbus.finder import Finder
-from eventbus.logger import Logger
-from eventbus.subscription import Subscription
+from .executor import MainOrderExecutor, MainExecutor
+from .finder import Finder
+from .logger import Logger
+from .subscription import Subscription
 
 
 def get_default_logger(identifier):
